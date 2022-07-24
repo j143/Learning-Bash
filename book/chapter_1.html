@@ -143,6 +143,21 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="chapter-1"><a class="header" href="#chapter-1">Chapter 1</a></h1>
+<p>Creating a temporary directory:</p>
+<pre><code class="language-bash">mkdir temp
+tmp_repo=$(mktemp -d temp/systemds-XXXXX)
+</code></pre>
+<p>This will generate a directory like <code>systemds-11ab8</code>, that is name with a random five digit string.</p>
+<p>Run operations over a files in a directory with <code>for</code> loop</p>
+<pre><code class="language-bash">for file in $(find . -type f) # in the present directory (denoted by . ), search for type files (denoted by f) 
+    do
+      # remove any dots in the file name
+      file_short=$(echo $file | sed -e &quot;s/\.\///&quot;)
+
+      # we can build a url format or any custom format
+      dest_url=&quot;example.com/$file_short&quot;
+    done
+</code></pre>
 
                     </main>
 
